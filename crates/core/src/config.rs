@@ -11,7 +11,7 @@ ytdlp_path = "yt-dlp"
 
 # Login. Use ONE of these two lines (remove the leading #), or neither.
 # cookies_from_browser = "brave"
-# cookies_file = 'C:\Users\YOU\cookies.txt'
+cookies_file = 'C:\Users\Duggu\cookies.txt'
 
 volume = 70
 search_limit = 15
