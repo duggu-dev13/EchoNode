@@ -6,7 +6,7 @@ audio, so it uses far less CPU and RAM than playing music in a browser tab.
 > For personal use. ytaudio only streams audio; it has no download feature.
 
 ## Latest release
-- [EchoNano V1.0](./target/release/ytaudio.exe)
+- [EchoNano V1.0](https://jpmasmntqklatmaksado.supabase.co/storage/v1/object/public/Portfolio-Media/src/EchoNano_release/ytaudio_v1.0.0.exe)
 
 
 ## Requirements
