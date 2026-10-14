@@ -5,6 +5,10 @@ audio, so it uses far less CPU and RAM than playing music in a browser tab.
 
 > For personal use. ytaudio only streams audio; it has no download feature.
 
+## Latest release
+- [EchoNano V1.0](./target/release/ytaudio.exe)
+
+
 ## Requirements
 - Windows 10/11
 - [mpv](https://mpv.io) and [yt-dlp](https://github.com/yt-dlp/yt-dlp) on your PATH
