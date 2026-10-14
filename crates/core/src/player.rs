@@ -1,5 +1,5 @@
-use anyhow::{anyhow, Result};
-use serde_json::{json, Value};
+use anyhow::{Result, anyhow};
+use serde_json::{Value, json};
 use std::process::Stdio;
 use std::time::Duration;
 use tokio::io::{AsyncBufReadExt, AsyncWriteExt, BufReader};
@@ -62,7 +62,8 @@ impl Player {
                 Err(_) => tokio::time::sleep(Duration::from_millis(100)).await,
             }
         }
-        let pipe = pipe.ok_or_else(|| anyhow!("mpv started but its control pipe never appeared"))?;
+        let pipe =
+            pipe.ok_or_else(|| anyhow!("mpv started but its control pipe never appeared"))?;
         let (reader, mut writer) = tokio::io::split(pipe);
 
         // Writer task: sends queued commands to mpv, one JSON object per line.
@@ -98,7 +99,12 @@ impl Player {
         };
 
         // Ask mpv to tell us when these change.
-        for (id, prop) in [(1, "time-pos"), (2, "duration"), (3, "pause"), (4, "volume")] {
+        for (id, prop) in [
+            (1, "time-pos"),
+            (2, "duration"),
+            (3, "pause"),
+            (4, "volume"),
+        ] {
             player.send(json!({ "command": ["observe_property", id, prop] }))?;
         }
 

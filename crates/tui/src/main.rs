@@ -29,20 +29,22 @@ async fn main() -> Result<()> {
 
     // 1) Keyboard: a plain thread, because reading keys blocks.
     let key_tx = tx.clone();
-    std::thread::spawn(move || loop {
-        match event::read() {
-            Ok(Event::Key(k)) if k.kind == KeyEventKind::Press => {
-                if key_tx.send(AppEvent::Key(k)).is_err() {
-                    break;
+    std::thread::spawn(move || {
+        loop {
+            match event::read() {
+                Ok(Event::Key(k)) if k.kind == KeyEventKind::Press => {
+                    if key_tx.send(AppEvent::Key(k)).is_err() {
+                        break;
+                    }
                 }
-            }
-            Ok(Event::Resize(_, _)) => {
-                if key_tx.send(AppEvent::Resize).is_err() {
-                    break;
+                Ok(Event::Resize(_, _)) => {
+                    if key_tx.send(AppEvent::Resize).is_err() {
+                        break;
+                    }
                 }
+                Ok(_) => {}
+                Err(_) => break,
             }
-            Ok(_) => {}
-            Err(_) => break,
         }
     });
 

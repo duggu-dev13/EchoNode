@@ -22,7 +22,8 @@ pub fn draw(f: &mut Frame, app: &mut App) {
     let text = if typing {
         format!("{}█", app.input)
     } else if app.input.is_empty() {
-        "Press / to search (or paste a playlist URL, or type :ytrec / :ytsubs / :ythistory)".to_string()
+        "Press / to search (or paste a playlist URL, or type :ytrec / :ytsubs / :ythistory)"
+            .to_string()
     } else {
         app.input.clone()
     };

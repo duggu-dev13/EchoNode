@@ -26,7 +26,7 @@ async fn main() -> anyhow::Result<()> {
     let mut pipe = None;
     for _ in 0..50 {
         if let Ok(p) = ClientOptions::new().open(PIPE) {
-            pipe = Some(p); 
+            pipe = Some(p);
             break;
         }
         tokio::time::sleep(Duration::from_millis(100)).await;

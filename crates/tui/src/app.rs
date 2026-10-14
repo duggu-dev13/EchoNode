@@ -246,11 +246,8 @@ impl App {
         if let Some(i) = self.queue_state.selected() {
             self.queue.remove(i);
             let len = self.queue.items.len();
-            self.queue_state.select(if len == 0 {
-                None
-            } else {
-                Some(i.min(len - 1))
-            });
+            self.queue_state
+                .select(if len == 0 { None } else { Some(i.min(len - 1)) });
         }
     }
 

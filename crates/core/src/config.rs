@@ -1,4 +1,4 @@
-use anyhow::{anyhow, Result};
+use anyhow::{Result, anyhow};
 use directories::ProjectDirs;
 use serde::Deserialize;
 use std::path::PathBuf;
@@ -77,7 +77,11 @@ impl Config {
     pub fn mpv_cookie_args(&self) -> Vec<String> {
         if let Some(file) = &self.cookies_file {
             // %N% = length-prefixed value, so backslashes and spaces in the path are safe.
-            vec![format!("--ytdl-raw-options=cookies=%{}%{}", file.len(), file)]
+            vec![format!(
+                "--ytdl-raw-options=cookies=%{}%{}",
+                file.len(),
+                file
+            )]
         } else if let Some(browser) = &self.cookies_from_browser {
             vec![format!("--ytdl-raw-options=cookies-from-browser={browser}")]
         } else {
